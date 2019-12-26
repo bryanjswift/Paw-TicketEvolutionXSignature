@@ -16,7 +16,7 @@ const PROTOCOL_MATCHER = /^.*\/\//;
  */
 function createHmacInput(request: Request) {
   switch (request.getMethod()) {
-    case 'GET':
+    case "GET":
       return createHmacInputQuery(request);
     default:
       return createHmacInputBody(request);
@@ -30,7 +30,7 @@ function createHmacInput(request: Request) {
  */
 function createHmacInputBody(request: Request) {
   const method = request.getMethod();
-  const url = request.getUrl().replace(PROTOCOL_MATCHER, '');
+  const url = request.getUrl().replace(PROTOCOL_MATCHER, "");
   const suffix = `?${request.body}`;
   return `${method} ${url}${suffix}`;
 }
@@ -42,29 +42,28 @@ function createHmacInputBody(request: Request) {
  */
 function createHmacInputQuery(request: Request) {
   const method = request.getMethod();
-  const url = request.getUrl().replace(PROTOCOL_MATCHER, '');
+  const url = request.getUrl().replace(PROTOCOL_MATCHER, "");
   // If the query is empty append a '?'
-  const suffix = request.urlQuery.length === 0 ? '?' : '';
+  const suffix = request.urlQuery.length === 0 ? "?" : "";
   return `${method} ${url}${suffix}`;
 }
 
 class XSignature implements TicketEvolutionDynamicValues {
-  static identifier = 'com.bryanjswift.PawExtensions.XSignature'
-  static title = 'Ticket Evolution X-Signature'
-  static help = 'https://ticketevolution.atlassian.net/wiki/spaces/API/pages/983115/Signing+requests+with+X-Signature'
-  static inputs = [
-    DynamicValueInput('secret', 'API Secret', 'SecureValue'),
-  ]
-  secret = '';
+  static identifier = "com.bryanjswift.PawExtensions.XSignature";
+  static title = "Ticket Evolution X-Signature";
+  static help =
+    "https://ticketevolution.atlassian.net/wiki/spaces/API/pages/983115/Signing+requests+with+X-Signature";
+  static inputs = [DynamicValueInput("secret", "API Secret", "SecureValue")];
+  secret = "";
 
   evaluate(context: Context) {
     const request = context.getCurrentRequest();
     const input = createHmacInput(request);
-    const hmac = new DynamicValue('com.luckymarmot.HMACDynamicValue', {
+    const hmac = new DynamicValue("com.luckymarmot.HMACDynamicValue", {
       input,
       key: this.secret,
-      encoding: 'Base64',
-      algorithm: 3, /* sha256 */
+      encoding: "Base64",
+      algorithm: 3 /* sha256 */,
       uppercase: true,
     });
     return hmac.getEvaluatedString();
