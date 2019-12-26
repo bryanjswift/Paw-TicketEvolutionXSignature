@@ -15,7 +15,7 @@ npm install
 ### Build
 
 ```shell
-npm run build
+make build
 ```
 
 ### Install
