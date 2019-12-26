@@ -10,7 +10,7 @@ class XSignature implements TicketEvolutionDynamicValues {
   static title = 'Ticket Evolution X-Signature'
   static help = 'https://ticketevolution.atlassian.net/wiki/spaces/API/pages/983115/Signing+requests+with+X-Signature'
   static inputs = [
-    DynamicValueInput('secret', 'API Secret', "SecureValue"),
+    DynamicValueInput('secret', 'API Secret', 'SecureValue'),
   ]
   secret = '';
   token = '';
