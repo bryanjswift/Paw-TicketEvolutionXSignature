@@ -28,6 +28,10 @@ class XSignature implements TicketEvolutionDynamicValues {
     });
     return hmac.getEvaluatedString();
   }
+
+  text() {
+    return this.secret;
+  }
 }
 
 // call to register function is required
