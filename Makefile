@@ -35,10 +35,10 @@ $(OUT): node_modules $(SRC)
 	@rm -rf $(filter-out $(OUT), $(wildcard $(OUT_DIR)/*.* $(OUT_DIR)/*/*.*))
 	npm run build
 
-$(OUT_DIR)/README.md:
+$(OUT_DIR)/README.md: README.md
 	cp README.md $(OUT_DIR)/
 
-$(OUT_DIR)/LICENSE:
+$(OUT_DIR)/LICENSE: LICENSE
 	cp LICENSE $(OUT_DIR)/
 
 install: bundle
