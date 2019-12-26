@@ -1,5 +1,3 @@
-type HttpMethod = 'GET' | 'POST';
-
 interface TicketEvolutionDynamicValues {
   readonly secret: string;
 }
