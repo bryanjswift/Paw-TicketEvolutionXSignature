@@ -2,7 +2,6 @@ type HttpMethod = 'GET' | 'POST';
 
 interface TicketEvolutionDynamicValues {
   readonly secret: string;
-  readonly token: string;
 }
 
 class XSignature implements TicketEvolutionDynamicValues {
@@ -13,7 +12,6 @@ class XSignature implements TicketEvolutionDynamicValues {
     DynamicValueInput('secret', 'API Secret', 'SecureValue'),
   ]
   secret = '';
-  token = '';
 
   evaluate(context: PawContext) {
     const request = context.getCurrentRequest();
