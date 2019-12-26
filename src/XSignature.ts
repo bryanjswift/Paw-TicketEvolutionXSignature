@@ -11,7 +11,7 @@ class XSignature implements TicketEvolutionDynamicValues {
   ]
   secret = '';
 
-  evaluate(context: PawContext) {
+  evaluate(context: Context) {
     const request = context.getCurrentRequest();
     const url = request.getUrl().replace(/^.*\/\//, '');
     const input = `${request.getMethod()} ${url}`;
