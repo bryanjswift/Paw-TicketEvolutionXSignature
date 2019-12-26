@@ -14,11 +14,17 @@ npm install
 
 ### Build
 
+Compiles the source files into the JavaScript which can be used by the Paw
+application.
+
 ```shell
 make build
 ```
 
 ### Install
+
+Moves the built files into the local "Application Support" directory for
+`com.luckymarmot.Paw`.
 
 ```shell
 make install
