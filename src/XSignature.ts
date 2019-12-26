@@ -1,33 +1,5 @@
 type HttpMethod = 'GET' | 'POST';
 
-interface PawRequest {
-  readonly id: string;
-  readonly name: string;
-  readonly description: string;
-  readonly url: string;
-  readonly urlBase: string;
-  readonly urlQuery: string;
-  readonly method: HttpMethod;
-  getMethod(): HttpMethod;
-  getUrl(): string;
-  getUrlParametersNames(): string[];
-  getUrlParametersByName(name: string): string;
-  getHeadersNames(): string[];
-  getHeadersByName(name: string): string;
-  addHeader(name: string, value: string): void;
-  setHeader(name: string, value: string): void;
-}
-
-interface RuntimeInfo {
-  readonly task: 'requestSend' | 'dynamicValuePreview' | 'codeGenerationPreview' | 'codeGenerationCopyToClipboard' | 'export' | 'stringCopyToClipboard';
-  readonly isMainThread: boolean;
-}
-
-interface PawContext {
-  runtimeInfo: RuntimeInfo;
-  getCurrentRequest(): PawRequest;
-}
-
 interface TicketEvolutionDynamicValues {
   readonly secret: string;
   readonly token: string;
