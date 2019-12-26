@@ -49,6 +49,15 @@ declare interface Request {
    * The method of the request.
    */
   readonly method: HttpMethod;
+  /**
+   * The body of the request.
+   */
+  readonly body: string;
+  /**
+   * The request body as an object (dictionary or array), when it uses the JSON
+   * body format.
+   */
+  readonly jsonBody: object;
   getMethod(): HttpMethod;
   getUrl(): string;
   getUrlParametersNames(): string[];
