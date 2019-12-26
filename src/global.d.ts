@@ -1,10 +1,28 @@
-declare type RuntimeInfoTask = 'requestSend' | 'dynamicValuePreview' | 'codeGenerationPreview' | 'codeGenerationCopyToClipboard' | 'export' | 'stringCopyToClipboard';
+declare type RuntimeInfoTask =
+  | "requestSend"
+  | "dynamicValuePreview"
+  | "codeGenerationPreview"
+  | "codeGenerationCopyToClipboard"
+  | "export"
+  | "stringCopyToClipboard";
 
-declare type HttpMethod = 'GET' | 'HEAD' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'TRACE' | 'OPTIONS';
+declare type HttpMethod =
+  | "GET"
+  | "HEAD"
+  | "POST"
+  | "PUT"
+  | "PATCH"
+  | "DELETE"
+  | "TRACE"
+  | "OPTIONS";
 
 declare function registerDynamicValueClass(o: any): void;
 
-declare function DynamicValueInput(key: string, label: string, valueType: string): void;
+declare function DynamicValueInput(
+  key: string,
+  label: string,
+  valueType: string
+): void;
 
 declare class DynamicValue {
   constructor(valueType: string, options: any);
