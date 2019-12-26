@@ -17,7 +17,6 @@ class XSignature implements TicketEvolutionDynamicValues {
 
   evaluate(context: PawContext) {
     const request = context.getCurrentRequest();
-    // GET api.ticketevolution.com/v9/brokerages?page=1&per_page=1
     const url = request.getUrl().replace(/^.*\/\//, '');
     const input = `${request.getMethod()} ${url}`;
     const hmac = new DynamicValue('com.luckymarmot.HMACDynamicValue', {
@@ -27,8 +26,6 @@ class XSignature implements TicketEvolutionDynamicValues {
       algorithm: 3, /* sha256 */
       uppercase: true,
     });
-    // GET api.ticketevolution.com/v9/brokerages?page=1&per_page=1
-    // GET api.sandbox.ticketevolution.com/v9/brokerages?page=1&per_page=1
     return hmac.getEvaluatedString();
   }
 }
