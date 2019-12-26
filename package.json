@@ -1,0 +1,20 @@
+{
+  "name": "Paw-XSignature",
+  "version": "1.0.0",
+  "main": "build/XSignature.js",
+  "license": "MIT",
+  "homepage": "https://github.com/bryanjswift/Paw-XSignature",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^13.1.0",
+    "typescript": "3.7.4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bryanjswift/Paw-XSignature.git"
+  }
+}
