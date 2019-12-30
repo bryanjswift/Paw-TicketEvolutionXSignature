@@ -29,6 +29,66 @@ declare class DynamicValue {
   getEvaluatedString(): string;
 }
 
+declare interface BasicAuthConfiguration {
+  username: string;
+  password: string;
+}
+
+declare interface Headers {
+  [name: string]: string;
+}
+
+/**
+ * Represents a group of `Request` instances like it is shown in the "Requests"
+ * view.
+ * @see https://paw.cloud/docs/reference/RequestGroup
+ */
+declare interface RequestGroup {
+  /**
+   * The unique identifier (UUID).
+   */
+  readonly id: string;
+  /**
+   * The name of the `RequestGroup` as it is shown in the "Requests" view.
+   */
+  name: string;
+  /**
+   * The order of the RequestGroup in its parent RequestGroup or as a root item
+   * (orders starts at 0).
+   */
+  order: number;
+  /**
+   * The parent `RequestGroup` if any, otherwise `null`.
+   */
+  parent: RequestGroup | null;
+  /**
+   * Returns all child items (either request or group) as an array of `Request`
+   * and `RequestGroup` objects.
+   */
+  getChildren(): Array<Request | RequestGroup>;
+  /**
+   * @returns all child requests, as an array of `Request` objects.
+   */
+  getChildRequests(): Request[];
+  /**
+   * @returns all child request groups, as an array of `RequestGroup` objects.
+   */
+  getChildGroups(): RequestGroup[];
+  /**
+   * Modifies the current RequestGroup by adding the `child` as its last child.
+   * Only available for importers.
+   * @param child to append to the end of this group.
+   */
+  appendChild(child: Request | RequestGroup): void;
+  /**
+   * Insert the `child` as its child at the given `index`. Only available for
+   * importers.
+   * @param child to insert into this group.
+   * @param index from 0 where the child will be inserted.
+   */
+  insertChild(child: Request | RequestGroup, index: number): void;
+}
+
 /**
  * @see https://paw.cloud/docs/reference/Request
  */
@@ -51,6 +111,10 @@ declare interface Request {
    */
   readonly order: number;
   /**
+   * The parent `RequestGroup` if one exists, `null` otherwise.
+   */
+  readonly parent: RequestGroup | null;
+  /**
    * The URL of the request.
    */
   readonly url: string;
@@ -67,6 +131,18 @@ declare interface Request {
    * The method of the request.
    */
   readonly method: HttpMethod;
+  /**
+   * Returns an object (dictionary) pairing the request's headers values to
+   * their names. Header values are returned as plain strings. The getter
+   * method `getHeaders` is also availalble. Writable only for importers.
+   */
+  headers: Headers;
+  /**
+   * Returns the request HTTP Basic Auth configuration, if any, as an object
+   * (dictionary) with the "username" and "password" keys containing strings. The
+   * getter method getHttpBasicAuth() is also available.
+   */
+  httpBasicAuth: BasicAuthConfiguration | null;
   /**
    * The body of the request.
    */
@@ -123,4 +199,11 @@ declare interface Context {
    * @returns the current Request.
    */
   getCurrentRequest(): Request;
+  /**
+   * Access a specific `Request` based on it's name.
+   * @param name of the request to retrieve.
+   * @returns the `Request` referenced by `name` or `null` if one does not
+   * exist.
+   */
+  getRequestByName(name: string): Request | null;
 }
