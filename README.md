@@ -6,7 +6,7 @@ Evolution API][tevo-api] for the [Paw][paw] application.
 
 ## Install the Extension
 
-1. Download the `.zip` archive of the latest version
+1. Download the [`.zip` archive of the latest version][releases]
 1. Open the [Paw][paw] application
 1. Open preferences for the Paw application
 1. Click on "Extensions" in Paw's preferences
@@ -16,6 +16,8 @@ Evolution API][tevo-api] for the [Paw][paw] application.
 1. Copy the `.zip` archive of the latest version to the `Extensions` directory
 1. Unzip the `.zip` archive which should create a folder named
   `com.bryanjswift.PawExtensions.XSignature`
+
+[releases]: https://github.com/bryanjswift/Paw-TicketEvolutionXSignature/releases/latest
 
 ## Use the Extension
 
