@@ -6,7 +6,7 @@ SRC_DIR=./src
 # Source files
 SRC := $(shell find $(SRC_DIR) -regex '.*\.ts' -not -name '*.d.ts')
 ## Find `package.json` files everywhere except `node_modules`
-PACKAGE_JSON := $(shell find . -depth 3 -name 'package.json' -and -not -path './node_modules/*') package.json
+PACKAGE_JSON := $(shell find . -maxdepth 2 -name 'package.json' -and -not -path './node_modules/*')
 # Output files
 ## Replace file suffixes keeping src path
 SRC_OUT := $(SRC:.ts=.js)
