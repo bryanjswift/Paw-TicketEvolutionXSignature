@@ -1,9 +1,9 @@
 {
-  "name": "Paw-XSignature",
+  "name": "Paw-TicketEvolutionXSignature",
   "version": "1.0.0",
   "main": "build/XSignature.js",
   "license": "MIT",
-  "homepage": "https://github.com/bryanjswift/Paw-XSignature",
+  "homepage": "https://github.com/bryanjswift/Paw-TicketEvolutionXSignature",
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^13.1.0",
@@ -15,6 +15,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:bryanjswift/Paw-XSignature.git"
+    "url": "git@github.com:bryanjswift/Paw-TicketEvolutionXSignature.git"
   }
 }
