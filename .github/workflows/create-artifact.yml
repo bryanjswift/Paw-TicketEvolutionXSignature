@@ -16,15 +16,15 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
     - run: npm install
     - run: make archive
-    - run: cp XSignature.zip Paw-TicketEvolutionXSignature-${{ github.ref }}.zip
+    - run: cp XSignature.zip Paw-TicketEvolutionXSignature-${{ env.GITHUB_REF }}.zip
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: ${{ github.ref }}
+        tag_name: ${{ env.GITHUB_REF }}
+        release_name: ${{ env.GITHUB_REF }}
         draft: false
         prerelease: false
     - name: Upload Release Asset
@@ -34,6 +34,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./Paw-TicketEvolutionXSignature-${{ github.ref }}.zip
-        asset_name: Paw-TicketEvolutionXSignature-${{ github.ref }}.zip
+        asset_path: ./Paw-TicketEvolutionXSignature-${{ env.GITHUB_REF }}.zip
+        asset_name: Paw-TicketEvolutionXSignature-${{ env.GITHUB_REF }}.zip
         asset_content_type: application/zip
