@@ -6,7 +6,7 @@
   "homepage": "https://github.com/bryanjswift/Paw-TicketEvolutionXSignature",
   "dependencies": {},
   "devDependencies": {
-    "@types/node": "^13.1.0",
+    "@types/node": "^13.7.4",
     "typescript": "3.7.4"
   },
   "scripts": {
